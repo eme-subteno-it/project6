@@ -33,6 +33,11 @@ INNER JOIN user_oc AS u ON u.id = o.user_id
 GROUP BY d.delivery_date, d.delivery_state, u.user_name, u.user_firstname
 
 -- Les 5 meilleurs clients (le + de commande)
+SELECT 
+u.user_name, u.user_firstname, COUNT(*) 
+FROM sale_order AS so
+INNER JOIN user_oc AS u ON u.id = so.user_id
+GROUP BY u.user_name, u.user_firstname
 
 -- Get all sales for the product category pizza
 SELECT SUM(l.qty * p.unit_price) AS HT,
